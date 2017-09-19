@@ -3,6 +3,12 @@
   border: 1px solid #bbbbbb;
   border-radius: 5px;
   padding: 10px;
+  opacity: 0.7;
+}
+
+.new-tweet:hover {
+  border: 1px solid #000000;
+  opacity: 1;
 }
 
 .new-tweet h2 {
@@ -13,6 +19,7 @@
 .new-tweet textarea {
   width: 100%;
   padding: 3px;
+  resize: vertical;
 }
 
 .new-tweet .submit {
