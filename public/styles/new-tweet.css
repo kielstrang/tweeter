@@ -7,11 +7,12 @@
 }
 
 .new-tweet:hover {
-  border: 1px solid #000000;
+  border: 1px solid #00a087;
   opacity: 1;
 }
 
 .new-tweet h2 {
+  color: #000000;
   border-bottom: 1px solid #000000;
   margin: 0 0 10px;
 }
