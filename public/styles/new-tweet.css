@@ -23,6 +23,6 @@
   float: right;
 }
 
-.new-tweet .counter.red {
-  color: red;
+.new-tweet .counter.tweet-too-long {
+  color: #ff0000;
 }
