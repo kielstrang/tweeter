@@ -27,7 +27,7 @@
   overflow: hidden;
 }
 
-.tweet img {
+.tweet .tweet-avatar img {
   height: 60px;
   width: 60px;
 }
@@ -59,11 +59,28 @@
 
 .tweet footer {
   height: 30px;
-  padding-left: 10px;
+  padding: 0 10px;
   border-top: 1px solid #bbbbbb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .tweet .tweet-time {
-  line-height: 30px;
   font-size: 80%;
+}
+
+.tweet .tweet-icons {
+  padding-top: 4px;
+  visibility: hidden;
+}
+
+.tweet .tweet-icons img {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+}
+
+.tweet:hover .tweet-icons {
+  visibility:visible;
 }
