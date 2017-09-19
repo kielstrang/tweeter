@@ -16,6 +16,10 @@
   opacity: 0.7;
 }
 
+.tweet:hover header{
+  opacity: 1;
+}
+
 .tweet .tweet-avatar {
   height: 60px;
   width: 60px;
@@ -33,14 +37,19 @@
   justify-content: space-between;
   align-items: baseline;
   padding-left: 10px;
-  width: calc(100% - 40px);
+  width: calc(100% - 60px);
 }
 
 .tweet .tweet-name {
   font-size: 150%;
   font-weight: 700;
-  line-height: 30px;
+  line-height: 40px;
 }
+
+.tweet .tweet-handle {
+  font-size: 90%;
+}
+
 .tweet .tweet-body {
   min-height: 80px;
   padding: 10px;
