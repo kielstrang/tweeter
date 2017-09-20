@@ -1,5 +1,8 @@
 
+const MAX_TWEET_LENGTH = 140;
+
 $(function() {
+
   function createTweetElement(tweet) {
     const $tweet = $('<article>').addClass('tweet')
       .append(
@@ -62,11 +65,26 @@ $(function() {
     });
   }
 
+  function validateTweet() {
+    const tweet = $('.new-tweet textarea').val();
+    if(!tweet) return 'No tweet!';
+    if(tweet.length > MAX_TWEET_LENGTH) return 'Tweet too long!';
+    return '';
+  }
+
+  function showError(err) {
+    alert(err);
+  }
+
 
   loadTweets();
 
   $('.new-tweet input').on('click', function(event) {
     event.preventDefault();
-    submitTweet();
+    if(err = validateTweet()) {
+      showError(err);
+    } else {
+      submitTweet();
+    }
   });
 });
