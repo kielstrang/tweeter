@@ -52,14 +52,15 @@ $(function() {
   }
 
   function submitTweet() {
+    $('#new-tweet').slideUp('fast');
     $.ajax({
       url: '/tweets',
       method: 'POST',
       data: {
-        text: $('#new-tweet textarea').val()
+        text: $('#new-tweet').find('textarea').val()
       },
       success: function() {
-        $('#new-tweet textarea').val('');
+        $('#new-tweet').find('textarea').val('');
         loadTweets();
       }
     });
@@ -86,6 +87,8 @@ $(function() {
   });
 
   $('.compose').on('click', function() {
-    $('#new-tweet').slideToggle();
+    $('#new-tweet').slideToggle('fast', function() {
+      $('#new-tweet').find('textarea').focus();
+    });
   });
 });
