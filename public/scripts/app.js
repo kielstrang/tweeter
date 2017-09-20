@@ -117,19 +117,6 @@ const tweetData = {
   },
 };
 
-function formatTweetCreationTime(unixMsec) {
-  const created = new Date(unixMsec);
-  const now = new Date();
-
-  if(created > now) return 'In the future!';
-  if(created.getFullYear() < now.getFullYear()) return `${now.getFullYear() - created.getFullYear()} years ago`;
-  if(created.getMonth() < now.getMonth()) return `${now.getMonth() - created.getMonth()} months ago`;
-  if(created.getDate() < now.getDate()) return `${now.getDate() - created.getDate()} days ago`;
-  if(created.getHours() < now.getHours()) return `${now.getHours() - created.getHours()} hours ago`;
-  if(created.getMinutes() < now.getMinutes()) return `${now.getMinutes() - created.getMinutes()} minutes ago`;
-  return 'Just now';
-}
-
 function createTweetElement(tweet) {
   const $tweet = $('<article>').addClass('tweet')
     .append(
@@ -148,7 +135,7 @@ function createTweetElement(tweet) {
     .append(
       $('<footer>')
         .append(
-          $('<span>').addClass('tweet-time').text(formatTweetCreationTime(tweet.created_at))
+          $('<span>').addClass('tweet-time').text(moment(tweet.created_at).fromNow())
         )
         .append(
           $('<div>').addClass('tweet-icons')
