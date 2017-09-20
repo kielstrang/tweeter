@@ -2,6 +2,8 @@
 const MAX_TWEET_LENGTH = 140;
 
 $(function() {
+  const newTweetSection = $('#new-tweet');
+  const newTweetInput = newTweetSection.find('textarea');
 
   function createTweetElement(tweet) {
     const $tweet = $('<article>').addClass('tweet')
@@ -34,10 +36,11 @@ $(function() {
   }
 
   function renderTweets(tweets) {
-    $('#tweets-container').empty();
+    const tweetsContainer = $('#tweets-container');
+    tweetsContainer.empty();
     for(tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').prepend($tweet);
+      tweetsContainer.prepend($tweet);
     }
   }
 
@@ -52,55 +55,57 @@ $(function() {
   }
 
   function saveTweet() {
-    $('#new-tweet').slideUp('fast');
     $.ajax({
       url: '/tweets',
       method: 'POST',
       data: {
-        text: $('#new-tweet').find('textarea').val()
+        text: newTweetInput.val()
       },
       success: function() {
-        $('#new-tweet').find('textarea').val('');
+        newTweetSection.slideUp('fast');
+        newTweetInput.val('');
         loadTweets();
       }
     });
   }
 
   function validateTweet() {
-    const tweet = $('#new-tweet').find('textarea').val();
+    const tweet = newTweetInput.val();
     if(!tweet) return 'No tweet!';
     if(tweet.length > MAX_TWEET_LENGTH) return 'Tweet too long!';
-
-    $('#tweet-error').empty();
     return '';
   }
 
   function submitTweet() {
+    const tweetError = $('#tweet-error');
     if(err = validateTweet()) {
-      $('#tweet-error').text(err);
+      tweetError.text(err);
     } else {
+      tweetError.empty();
       saveTweet();
     }
   }
 
   loadTweets();
 
-  $('#new-tweet input').on('click', function(event) {
+  newTweetInput.find('form').on('submit', function(event) {
     event.preventDefault();
     submitTweet();
   });
 
-  $('#new-tweet').find('textarea').on('keypress', function(e) {
-    if(e.which == 13 && !e.shiftKey) {
+  newTweetInput.on('keypress', function(event) {
+    if(event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
       submitTweet();
-      e.preventDefault();
-      return false;
     }
   });
 
   $('.compose').on('click', function() {
-    $('#new-tweet').slideToggle('fast', function() {
-      $('#new-tweet').find('textarea').focus();
+    newTweetSection.slideToggle('fast', function() {
+      if(!newTweetSection.is(':hidden')) {
+        window.scrollTo(0,0);
+        newTweetInput.focus();
+      }
     });
   });
 });
