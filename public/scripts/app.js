@@ -45,13 +45,13 @@ $(function() {
     $.ajax({
       url: '/tweets',
       method: 'GET',
-      success: function (response) {
+      success: function(response) {
         renderTweets(response);
       }
     });
   }
 
-  function submitTweet() {
+  function saveTweet() {
     $('#new-tweet').slideUp('fast');
     $.ajax({
       url: '/tweets',
@@ -67,7 +67,7 @@ $(function() {
   }
 
   function validateTweet() {
-    const tweet = $('#new-tweet textarea').val();
+    const tweet = $('#new-tweet').find('textarea').val();
     if(!tweet) return 'No tweet!';
     if(tweet.length > MAX_TWEET_LENGTH) return 'Tweet too long!';
 
@@ -75,14 +75,26 @@ $(function() {
     return '';
   }
 
+  function submitTweet() {
+    if(err = validateTweet()) {
+      $('#tweet-error').text(err);
+    } else {
+      saveTweet();
+    }
+  }
+
   loadTweets();
 
   $('#new-tweet input').on('click', function(event) {
     event.preventDefault();
-    if(err = validateTweet()) {
-      $('#tweet-error').text(err);
-    } else {
+    submitTweet();
+  });
+
+  $('#new-tweet').find('textarea').on('keypress', function(e) {
+    if(e.which == 13 && !e.shiftKey) {
       submitTweet();
+      e.preventDefault();
+      return false;
     }
   });
 
