@@ -79,7 +79,6 @@ $(function() {
   $('#new-tweet input').on('click', function(event) {
     event.preventDefault();
     if(err = validateTweet()) {
-      console.log(err);
       $('#tweet-error').text(err);
     } else {
       submitTweet();
