@@ -1,6 +1,8 @@
 #nav-bar {
   background-color: #00a087;
   color: #e8fdff;
+  display: flex;
+  align-items: center;
   height: 80px;
   padding: 0 2em;
   position: fixed;
@@ -20,4 +22,24 @@
   font-size: 200%;
   line-height: 80px;
   margin-left: 10px;
+  margin-right: auto;
+}
+
+#nav-bar .compose {
+  background-color: #e7fdff;
+  border: 2px solid black;
+  border-radius: 5px;
+  color: #00a087;
+  float: right;
+  font-size: 120%;
+  height: 70%;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: center;
+}
+
+#nav-bar .compose:hover {
+  background-color: white;
+  color: black;
 }
