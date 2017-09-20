@@ -86,4 +86,19 @@ function renderTweets(tweets) {
 
 $(function() {
   renderTweets(tweetData);
+
+  $('.new-tweet input').on('click', function(event) {
+    event.preventDefault();
+    $.ajax({
+      url: '/tweets',
+      method: 'POST',
+      data: {
+        text: $('.new-tweet textarea').val()
+      },
+      success: function() {
+        $('.new-tweet textarea').val('');
+        //render tweets
+      }
+    });
+  });
 });
