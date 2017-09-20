@@ -84,4 +84,8 @@ $(function() {
       submitTweet();
     }
   });
+
+  $('.compose').on('click', function() {
+    $('#new-tweet').slideToggle();
+  });
 });

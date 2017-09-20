@@ -2,6 +2,8 @@
   background-color: #eeeeee;
   border: 1px solid #bbbbbb;
   border-radius: 5px;
+  display: none;
+  margin-top: 20px;
   padding: 10px;
   opacity: 0.7;
 }
