@@ -56,33 +56,31 @@ $(function() {
       url: '/tweets',
       method: 'POST',
       data: {
-        text: $('.new-tweet textarea').val()
+        text: $('#new-tweet textarea').val()
       },
       success: function() {
-        $('.new-tweet textarea').val('');
+        $('#new-tweet textarea').val('');
         loadTweets();
       }
     });
   }
 
   function validateTweet() {
-    const tweet = $('.new-tweet textarea').val();
+    const tweet = $('#new-tweet textarea').val();
     if(!tweet) return 'No tweet!';
     if(tweet.length > MAX_TWEET_LENGTH) return 'Tweet too long!';
+
+    $('#tweet-error').empty();
     return '';
   }
 
-  function showError(err) {
-    alert(err);
-  }
-
-
   loadTweets();
 
-  $('.new-tweet input').on('click', function(event) {
+  $('#new-tweet input').on('click', function(event) {
     event.preventDefault();
     if(err = validateTweet()) {
-      showError(err);
+      console.log(err);
+      $('#tweet-error').text(err);
     } else {
       submitTweet();
     }

@@ -1,4 +1,4 @@
-.new-tweet {
+#new-tweet {
   background-color: #eeeeee;
   border: 1px solid #bbbbbb;
   border-radius: 5px;
@@ -6,31 +6,31 @@
   opacity: 0.7;
 }
 
-.new-tweet:hover {
+#new-tweet:hover {
   border: 1px solid #00a087;
   opacity: 1;
 }
 
-.new-tweet h2 {
+#new-tweet h2 {
   color: #000000;
   border-bottom: 1px solid #000000;
   margin: 0 0 10px;
 }
 
-.new-tweet textarea {
+#new-tweet textarea {
   width: 100%;
   padding: 3px;
   resize: vertical;
 }
 
-.new-tweet .submit {
-  float: left;
-}
-
-.new-tweet .counter {
+#new-tweet #tweet-counter {
   float: right;
 }
 
-.new-tweet .counter.tweet-too-long {
+#new-tweet #tweet-counter.tweet-too-long {
+  color: #ff0000;
+}
+
+#new-tweet #tweet-error  {
   color: #ff0000;
 }
