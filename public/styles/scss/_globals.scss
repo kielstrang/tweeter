@@ -1,4 +1,9 @@
 $navbar-height: 80px;
+$container-padding: 40px;
+$tweet-spacing: 20px;
+$avatar-size: 60px;
+
+$container-top-padding: $navbar-height + $container-padding - $tweet-spacing;
 
 $color-navbar: #00a087;
 $color-background: #eee;

@@ -4,7 +4,7 @@
   border: 1px solid $color-border;
   border-radius: 5px;
   color: $color-text;
-  margin-top: 20px;
+  margin-top: $tweet-spacing;
   overflow: hidden;
 
   header {
@@ -16,13 +16,13 @@
 
   .tweet-avatar {
     border-radius: 5px;
-    height: 60px;
+    height: $avatar-size;
     overflow: hidden;
-    width: 60px;
+    width: $avatar-size;
 
     img {
-      height: 60px;
-      width: 60px;
+      height: $avatar-size;
+      width: $avatar-size;
     }
   }
 
@@ -31,7 +31,7 @@
     display: flex;
     justify-content: space-between;
     padding-left: 10px;
-    width: calc(100% - 60px);
+    width: calc(100% - #{$avatar-size});
   }
 
   .tweet-name {

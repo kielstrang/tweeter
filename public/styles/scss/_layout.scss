@@ -17,6 +17,6 @@ body {
   background-color: $color-foreground;
   margin: 0 auto;
   min-height: 100vh;
-  padding: 100px 40px 40px;
+  padding: $container-top-padding $container-padding $container-padding;
   width: 450px;
 }
