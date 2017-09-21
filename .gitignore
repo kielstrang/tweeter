@@ -1,4 +1,4 @@
 node_modules/
 .env
 .DS_Store
-public/styles/.sass-cache
+.sass-cache

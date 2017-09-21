@@ -6,6 +6,8 @@ $(function() {
   const newTweetSection = $('#new-tweet');
   const newTweetInput = newTweetSection.find('textarea');
 
+  const loginSection = $('#login');
+
   function createTweetElement(tweet) {
     const $tweet = $('<article>').addClass('tweet')
       .append(
@@ -100,11 +102,20 @@ $(function() {
     }
   });
 
-  $('.compose').on('click', function() {
+  $('#compose-btn').on('click', function() {
     newTweetSection.slideToggle('fast', function() {
       if(!newTweetSection.is(':hidden')) {
         window.scrollTo(0,0);
         newTweetInput.focus();
+      }
+    });
+  });
+
+  $('#login-btn').on('click', function() {
+    loginSection.slideToggle('fast', function() {
+      if(!loginSection.is(':hidden')) {
+        window.scrollTo(0,0);
+        $('#username').focus();
       }
     });
   });

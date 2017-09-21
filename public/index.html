@@ -29,35 +29,51 @@
     <img class="logo" src="/images/bird.png">
     <span class="header">Tweeter</span>
     <span class="nav-logged-in">@SomeUser</span>
-    <button class="nav-logged-in">
+    <button id="compose-btn" class="nav-logged-in">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792">
         <path d="M888 1184l116-116-152-152-116 116v56h96v96h56zm440-720q-16-16-33 1l-350 350q-17 17-1 33t33-1l350-350q17-17 1-33zm80 594v190q0 119-84.5 203.5t-203.5 84.5h-832q-119 0-203.5-84.5t-84.5-203.5v-832q0-119 84.5-203.5t203.5-84.5h832q63 0 117 25 15 7 18 23 3 17-9 29l-49 49q-14 14-32 8-23-6-45-6h-832q-66 0-113 47t-47 113v832q0 66 47 113t113 47h832q66 0 113-47t47-113v-126q0-13 9-22l64-64q15-15 35-7t20 29zm-96-738l288 288-672 672h-288v-288zm444 132l-92 92-288-288 92-92q28-28 68-28t68 28l152 152q28 28 28 68t-28 68z"/>
       </svg>
       <span>Compose</span>
     </button>
-    <button class="nav-logged-in">
+    <button id="logout-btn" class="nav-logged-in">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792">
         <path d="M704 1440q0 4 1 20t.5 26.5-3 23.5-10 19.5-20.5 6.5h-320q-119 0-203.5-84.5t-84.5-203.5v-704q0-119 84.5-203.5t203.5-84.5h320q13 0 22.5 9.5t9.5 22.5q0 4 1 20t.5 26.5-3 23.5-10 19.5-20.5 6.5h-320q-66 0-113 47t-47 113v704q0 66 47 113t113 47h312l11.5 1 11.5 3 8 5.5 7 9 2 13.5zm928-544q0 26-19 45l-544 544q-19 19-45 19t-45-19-19-45v-288h-448q-26 0-45-19t-19-45v-384q0-26 19-45t45-19h448v-288q0-26 19-45t45-19 45 19l544 544q19 19 19 45z"/>
       </svg>
-      <span>Logout</span>
+      <span>Log Out</span>
     </button>
-    <button class="nav-logged-out">
+    <button id="login-btn" class="nav-logged-out">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792">
         <path d="M1312 896q0 26-19 45l-544 544q-19 19-45 19t-45-19-19-45v-288h-448q-26 0-45-19t-19-45v-384q0-26 19-45t45-19h448v-288q0-26 19-45t45-19 45 19l544 544q19 19 19 45zm352-352v704q0 119-84.5 203.5t-203.5 84.5h-320q-13 0-22.5-9.5t-9.5-22.5q0-4-1-20t-.5-26.5 3-23.5 10-19.5 20.5-6.5h320q66 0 113-47t47-113v-704q0-66-47-113t-113-47h-312l-11.5-1-11.5-3-8-5.5-7-9-2-13.5q0-4-1-20t-.5-26.5 3-23.5 10-19.5 20.5-6.5h320q119 0 203.5 84.5t84.5 203.5z"/>
       </svg>
-      <span>Login</span>
+      <span>Log In</span>
     </button>
   </nav>
 
   <!-- Page-specific (main) content here -->
   <main class="container">
-    <section id="new-tweet">
+    <section id="new-tweet" class="slide-form">
       <h2>Compose Tweet</h2>
       <form action="/tweets" method="POST">
         <textarea name="text" placeholder="What are you humming about?"></textarea>
         <input type="submit" value="Tweet">
         <span id="tweet-error"></span>
         <span id="tweet-counter">140</span>
+      </form>
+    </section>
+    <section id="login" class="slide-form">
+      <h2>Log In</h2>
+      <form action="/login" method="POST">
+        <div>
+            <label for="username">User:</label>
+            <input id="username" type="text" name="username">
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input id="password" type="password" name="password">
+        </div>
+        <div>
+            <input type="submit" value="Log In">
+        </div>
       </form>
     </section>
     <section id="tweets-container"></section>

@@ -62,7 +62,7 @@ body {
     color: black;
     fill: black; }
 
-#new-tweet {
+.slide-form {
   background-color: #eee;
   border: 1px solid #bbb;
   border-radius: 5px;
@@ -70,24 +70,30 @@ body {
   margin-top: 20px;
   padding: 10px;
   opacity: 0.7; }
-  #new-tweet h2 {
+  .slide-form h2 {
     border-bottom: 1px solid black;
     color: black;
     margin: 0 0 10px; }
-  #new-tweet textarea {
+  .slide-form textarea {
     padding: 3px;
     resize: vertical;
     width: 100%; }
-  #new-tweet #tweet-counter {
+  .slide-form #tweet-counter {
     float: right; }
-    #new-tweet #tweet-counter #tweet-counter.tweet-too-long {
+    .slide-form #tweet-counter #tweet-counter.tweet-too-long {
       color: red; }
-  #new-tweet #tweet-error {
+  .slide-form #tweet-error {
     color: red; }
 
-#new-tweet:hover {
+.slide-form:hover {
   border: 1px solid #00a087;
   opacity: 1; }
+
+#login label {
+  display: inline-block;
+  width: 70px; }
+#login input[type="text"], #login input[type="password"] {
+  width: calc(100% - 70px - 10px); }
 
 .tweet {
   border: 1px solid #bbb;

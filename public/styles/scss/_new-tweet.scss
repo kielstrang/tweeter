@@ -1,12 +1,12 @@
 @import 'globals';
 
-#new-tweet {
+.slide-form {
   background-color: $color-background;
   border: 1px solid $color-border;
-  border-radius: 5px;
+  border-radius: $block-radius;
   display: none;
   margin-top: $tweet-spacing;
-  padding: 10px;
+  padding: $block-padding;
   opacity: 0.7;
 
   h2 {
@@ -34,7 +34,18 @@
   }
 }
 
-#new-tweet:hover {
+.slide-form:hover {
   border: 1px solid $color-border-hover;
   opacity: 1;
+}
+
+#login {
+  label {
+    display: inline-block;
+    width: $login-label-width;
+  }
+
+  input[type="text"], input[type="password"]{
+    width: calc(100% - #{$login-label-width} - 10px);
+  }
 }

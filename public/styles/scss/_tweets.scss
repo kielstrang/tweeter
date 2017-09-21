@@ -2,7 +2,7 @@
 
 .tweet {
   border: 1px solid $color-border;
-  border-radius: 5px;
+  border-radius: $block-radius;
   color: $color-text;
   margin-top: $tweet-spacing;
   overflow: hidden;
@@ -10,7 +10,7 @@
   header {
     background-color: $color-background;
     display: flex;
-    padding: 10px;
+    padding: $block-padding;
     opacity: 0.7;
   }
 
