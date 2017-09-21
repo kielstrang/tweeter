@@ -1,8 +1,8 @@
 #nav-bar {
+  align-items: center;
   background-color: #00a087;
   color: #e8fdff;
   display: flex;
-  align-items: center;
   height: 80px;
   padding: 0 2em;
   position: fixed;

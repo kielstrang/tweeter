@@ -21,10 +21,10 @@
 }
 
 .tweet .tweet-avatar {
-  height: 60px;
-  width: 60px;
   border-radius: 5px;
+  height: 60px;
   overflow: hidden;
+  width: 60px;
 }
 
 .tweet .tweet-avatar img {
@@ -33,9 +33,9 @@
 }
 
 .tweet .tweet-user {
+  align-items: baseline;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
   padding-left: 10px;
   width: calc(100% - 60px);
 }
@@ -51,19 +51,19 @@
 }
 
 .tweet .tweet-body {
+  align-items: center;
+  display: flex;
   min-height: 80px;
   padding: 10px;
-  display: flex;
-  align-items: center;
 }
 
 .tweet footer {
-  height: 30px;
-  padding: 0 10px;
+  align-items: center;
   border-top: 1px solid #bbbbbb;
   display: flex;
+  height: 30px;
   justify-content: space-between;
-  align-items: center;
+  padding: 0 10px;
 }
 
 .tweet .tweet-time {
@@ -76,12 +76,12 @@
 }
 
 .tweet .tweet-icons img {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
   cursor: pointer;
+  height: 15px;
+  margin: 0 2px;
+  width: 15px;
 }
 
 .tweet:hover .tweet-icons {
-  visibility:visible;
+  visibility: visible;
 }

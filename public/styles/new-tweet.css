@@ -14,15 +14,15 @@
 }
 
 #new-tweet h2 {
-  color: #000000;
   border-bottom: 1px solid #000000;
+  color: #000000;
   margin: 0 0 10px;
 }
 
 #new-tweet textarea {
-  width: 100%;
   padding: 3px;
   resize: vertical;
+  width: 100%;
 }
 
 #new-tweet #tweet-counter {
