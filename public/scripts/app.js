@@ -88,15 +88,14 @@ $(function() {
 
   loadTweets();
 
-  newTweetInput.find('form').on('submit', function(event) {
+  newTweetSection.find('form').on('submit', function(event) {
     event.preventDefault();
     submitTweet();
   });
 
   newTweetInput.on('keypress', function(event) {
     if(event.key === 'Enter' && !event.shiftKey) {
-      event.preventDefault();
-      submitTweet();
+      newTweetSection.find('form').submit();
     }
   });
 
