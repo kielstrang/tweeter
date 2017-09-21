@@ -14,8 +14,8 @@
 }
 
 #new-tweet h2 {
-  border-bottom: 1px solid #000000;
-  color: #000000;
+  border-bottom: 1px solid black;
+  color: black;
   margin: 0 0 10px;
 }
 
@@ -30,9 +30,9 @@
 }
 
 #new-tweet #tweet-counter.tweet-too-long {
-  color: #ff0000;
+  color: red;
 }
 
 #new-tweet #tweet-error  {
-  color: #ff0000;
+  color: red;
 }

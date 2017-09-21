@@ -1,3 +1,4 @@
+"use strict";
 
 const MAX_TWEET_LENGTH = 140;
 
@@ -38,7 +39,7 @@ $(function() {
   function renderTweets(tweets) {
     const tweetsContainer = $('#tweets-container');
     tweetsContainer.empty();
-    for(tweet of tweets) {
+    for(const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       tweetsContainer.prepend($tweet);
     }
@@ -58,9 +59,7 @@ $(function() {
     $.ajax({
       url: '/tweets',
       method: 'POST',
-      data: {
-        text: newTweetInput.val()
-      },
+      data: newTweetSection.find('form').serialize(),
       success: function() {
         newTweetSection.slideUp('fast');
         newTweetInput.val('');
@@ -79,7 +78,8 @@ $(function() {
 
   function submitTweet() {
     const tweetError = $('#tweet-error');
-    if(err = validateTweet()) {
+    const err = validateTweet();
+    if(err) {
       tweetError.text(err);
     } else {
       tweetError.empty();
