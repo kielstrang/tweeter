@@ -26,10 +26,13 @@
 }
 
 #nav-bar .compose {
+  align-items: center;
   background-color: #e7fdff;
   border: 2px solid black;
   border-radius: 5px;
   color: #00a087;
+  display: flex;
+  fill: #00a087;
   float: right;
   font-size: 120%;
   height: 70%;
@@ -39,7 +42,14 @@
   vertical-align: center;
 }
 
+#nav-bar svg {
+  height: 30px;
+  margin-right: 3px;
+  width: 25px;
+}
+
 #nav-bar .compose:hover {
   background-color: white;
   color: black;
+  fill: black;
 }
