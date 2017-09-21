@@ -96,6 +96,11 @@ $(function() {
     submitTweet();
   });
 
+  loginSection.find('form').on('submit', function(event) {
+    event.preventDefault();
+    alert('Login request goes here!');
+  });
+
   newTweetInput.on('keypress', function(event) {
     if(event.key === 'Enter' && !event.shiftKey) {
       newTweetSection.find('form').submit();
