@@ -7,6 +7,7 @@ $(function() {
   const newTweetInput = newTweetSection.find('textarea');
   const loginSection = $('#login');
   const registerSection = $('#register');
+  const page = $('html');
 
   function createTweetElement(tweet) {
     const $tweet = $('<article>').addClass('tweet')
@@ -61,7 +62,9 @@ $(function() {
     $.ajax({
       url: '/tweets',
       method: 'POST',
-      data: newTweetSection.find('form').serialize(),
+      data: {
+        text: newTweetInput.val()
+      },
       success: function() {
         newTweetSection.slideUp('fast');
         newTweetInput.val('');
@@ -89,6 +92,21 @@ $(function() {
     }
   }
 
+  function login(username, password) {
+    $('.nav-logged-in').removeClass('hide');
+    $('.nav-logged-out').addClass('hide');
+    $('#header-username').text(`@${username}`);
+    page.data('username', username);
+    loginSection.slideUp('fast');
+  }
+
+  function logout() {
+    $('.nav-logged-in').addClass('hide');
+    $('.nav-logged-out').removeClass('hide');
+    $('#header-username').text('');
+    page.removeData('username');
+  }
+
   loadTweets();
 
   newTweetSection.find('form').on('submit', function(event) {
@@ -98,12 +116,12 @@ $(function() {
 
   loginSection.find('form').on('submit', function(event) {
     event.preventDefault();
-    alert('Login request goes here!');
+    login($(this).find('.username').val(), $(this).find('.password').val());
   });
 
   registerSection.find('form').on('submit', function(event) {
     event.preventDefault();
-    alert('Register request goes here!');
+    register($(this).find('.username').val(), $(this).find('.password').val());
   });
 
   newTweetInput.on('keypress', function(event) {
@@ -139,5 +157,9 @@ $(function() {
         $(this).find('.username').focus();
       }
     });
+  });
+
+  $('#logout-btn').on('click', function () {
+    logout();
   });
 });
