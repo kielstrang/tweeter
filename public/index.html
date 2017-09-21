@@ -47,6 +47,12 @@
       </svg>
       <span>Log In</span>
     </button>
+    <button id="register-btn" class="nav-logged-out">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792">
+        <path d="M1344 960v-128q0-26-19-45t-45-19h-256v-256q0-26-19-45t-45-19h-128q-26 0-45 19t-19 45v256h-256q-26 0-45 19t-19 45v128q0 26 19 45t45 19h256v256q0 26 19 45t45 19h128q26 0 45-19t19-45v-256h256q26 0 45-19t19-45zm320-64q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/>
+      </svg>
+      <span>Register</span>
+    </button>
   </nav>
 
   <!-- Page-specific (main) content here -->
@@ -63,17 +69,21 @@
     <section id="login" class="slide-form">
       <h2>Log In</h2>
       <form action="/login" method="POST">
-        <div>
-            <label for="username">User:</label>
-            <input id="username" type="text" name="username">
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input id="password" type="password" name="password">
-        </div>
-        <div>
-            <input type="submit" value="Log In">
-        </div>
+        <label for="username">Username:</label>
+        <input class="username" type="text" name="username">
+        <label for="password">Password:</label>
+        <input class="password" type="password" name="password">
+        <input type="submit" value="Log In">
+      </form>
+    </section>
+    <section id="register" class="slide-form">
+      <h2>Register</h2>
+      <form action="/register" method="POST">
+        <label for="username">Username:</label>
+        <input class="username" type="text" name="username">
+        <label for="password">Password:</label>
+        <input class="password" type="password" name="password">
+        <input type="submit" value="Register">
       </form>
     </section>
     <section id="tweets-container"></section>

@@ -5,8 +5,8 @@ const MAX_TWEET_LENGTH = 140;
 $(function() {
   const newTweetSection = $('#new-tweet');
   const newTweetInput = newTweetSection.find('textarea');
-
   const loginSection = $('#login');
+  const registerSection = $('#register');
 
   function createTweetElement(tweet) {
     const $tweet = $('<article>').addClass('tweet')
@@ -101,6 +101,11 @@ $(function() {
     alert('Login request goes here!');
   });
 
+  registerSection.find('form').on('submit', function(event) {
+    event.preventDefault();
+    alert('Register request goes here!');
+  });
+
   newTweetInput.on('keypress', function(event) {
     if(event.key === 'Enter' && !event.shiftKey) {
       newTweetSection.find('form').submit();
@@ -117,10 +122,21 @@ $(function() {
   });
 
   $('#login-btn').on('click', function() {
+    registerSection.slideUp('fast');
     loginSection.slideToggle('fast', function() {
       if(!loginSection.is(':hidden')) {
         window.scrollTo(0,0);
-        $('#username').focus();
+        $(this).find('.username').focus();
+      }
+    });
+  });
+
+  $('#register-btn').on('click', function() {
+    loginSection.slideUp('fast');
+    registerSection.slideToggle('fast', function() {
+      if(!registerSection.is(':hidden')) {
+        window.scrollTo(0,0);
+        $(this).find('.username').focus();
       }
     });
   });
