@@ -31,13 +31,18 @@ body {
     float: left;
     height: 80px;
     width: 80px; }
-  #nav-bar .header {
-    float: left;
-    font-size: 200%;
+  #nav-bar > span {
+    font-size: 150%;
     line-height: 80px;
-    margin-left: 10px;
+    margin-left: 10px; }
+  #nav-bar .header {
+    font-size: 200%;
     margin-right: auto; }
-  #nav-bar .compose {
+  #nav-bar svg {
+    height: 30px;
+    margin-right: 3px;
+    width: 25px; }
+  #nav-bar button {
     align-items: center;
     background-color: #eee;
     border: 2px solid black;
@@ -45,18 +50,14 @@ body {
     color: #00a087;
     display: flex;
     fill: #00a087;
-    float: right;
     font-size: 120%;
     height: 70%;
+    margin-left: 10px;
     padding: 5px;
     text-align: center;
     text-decoration: none;
     vertical-align: center; }
-  #nav-bar svg {
-    height: 30px;
-    margin-right: 3px;
-    width: 25px; }
-  #nav-bar .compose:hover {
+  #nav-bar button:hover {
     background-color: white;
     color: black;
     fill: black; }

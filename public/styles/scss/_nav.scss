@@ -18,29 +18,15 @@
     width: $navbar-height;
   }
 
-  .header {
-    float: left;
-    font-size: 200%;
+  > span {
+    font-size: 150%;
     line-height: $navbar-height;
     margin-left: 10px;
-    margin-right: auto;
   }
 
-  .compose {
-    align-items: center;
-    background-color: $color-background;
-    border: 2px solid black;
-    border-radius: 5px;
-    color: $color-navbar;
-    display: flex;
-    fill: $color-navbar;
-    float: right;
-    font-size: 120%;
-    height: 70%;
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: center;
+  .header {
+    font-size: 200%;
+    margin-right: auto;
   }
 
   svg {
@@ -49,7 +35,24 @@
     width: 25px;
   }
 
-  .compose:hover {
+  button {
+    align-items: center;
+    background-color: $color-background;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: $color-navbar;
+    display: flex;
+    fill: $color-navbar;
+    font-size: 120%;
+    height: 70%;
+    margin-left: 10px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: center;
+  }
+
+  button:hover {
     background-color: $color-foreground;
     color: black;
     fill: black;
