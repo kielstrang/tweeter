@@ -1,8 +1,8 @@
 $(function() {
-  $('#new-tweet textarea').on('input', function() {
-    const tweetLength = $(this).val().length;
-    const counter = $('#tweet-counter');
+  const counter = $('#tweet-counter');
 
+  $('#new-tweet').find('textarea').on('input', function() {
+    const tweetLength = $(this).val().length;
     counter.text(MAX_TWEET_LENGTH - tweetLength);
     if(tweetLength > MAX_TWEET_LENGTH) {
       counter.addClass('tweet-too-long');

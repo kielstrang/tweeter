@@ -64,6 +64,7 @@ $(function() {
       success: function() {
         newTweetSection.slideUp('fast');
         newTweetInput.val('');
+        $('#tweet-counter').text(MAX_TWEET_LENGTH);
         loadTweets();
       }
     });
