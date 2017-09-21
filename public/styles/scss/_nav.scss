@@ -1,0 +1,55 @@
+#nav-bar {
+  align-items: center;
+  background-color: #00a087;
+  color: #e8fdff;
+  display: flex;
+  height: 80px;
+  padding: 0 2em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  .logo {
+    float: left;
+    height: 80px;
+    width: 80px;
+  }
+
+  .header {
+    float: left;
+    font-size: 200%;
+    line-height: 80px;
+    margin-left: 10px;
+    margin-right: auto;
+  }
+
+  .compose {
+    align-items: center;
+    background-color: #e7fdff;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: #00a087;
+    display: flex;
+    fill: #00a087;
+    float: right;
+    font-size: 120%;
+    height: 70%;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: center;
+  }
+
+  svg {
+    height: 30px;
+    margin-right: 3px;
+    width: 25px;
+  }
+
+  .compose:hover {
+    background-color: white;
+    color: black;
+    fill: black;
+  }
+}
