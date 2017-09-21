@@ -58,21 +58,21 @@
     height: 30px;
     justify-content: space-between;
     padding: 0 10px;
-  }
 
-  .tweet-time {
-    font-size: 80%;
-  }
+    .tweet-time {
+      font-size: 80%;
+    }
 
-  .tweet .tweet-icons {
-    padding-top: 4px;
-    visibility: hidden;
+    .tweet-icons {
+      padding-top: 4px;
+      visibility: hidden;
 
-    img {
-      cursor: pointer;
-      height: 15px;
-      margin: 0 2px;
-      width: 15px;
+      img {
+        cursor: pointer;
+        height: 15px;
+        margin: 0 2px;
+        width: 15px;
+      }
     }
   }
 }

@@ -138,16 +138,16 @@ body {
     height: 30px;
     justify-content: space-between;
     padding: 0 10px; }
-  .tweet .tweet-time {
-    font-size: 80%; }
-  .tweet .tweet .tweet-icons {
-    padding-top: 4px;
-    visibility: hidden; }
-    .tweet .tweet .tweet-icons img {
-      cursor: pointer;
-      height: 15px;
-      margin: 0 2px;
-      width: 15px; }
+    .tweet footer .tweet-time {
+      font-size: 80%; }
+    .tweet footer .tweet-icons {
+      padding-top: 4px;
+      visibility: hidden; }
+      .tweet footer .tweet-icons img {
+        cursor: pointer;
+        height: 15px;
+        margin: 0 2px;
+        width: 15px; }
 
 .tweet:hover {
   border: 1px solid #00a087; }
