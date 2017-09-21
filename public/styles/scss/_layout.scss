@@ -1,8 +1,5 @@
-/*
- * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
- * https://css-tricks.com/international-box-sizing-awareness-day/
- * Do not modify these two selectors, please
- */
+@import 'globals';
+
 html {
   box-sizing: border-box;
 }
@@ -11,14 +8,13 @@ html {
 }
 
 body {
-  background-color: #eee;
-  color: #244751;
+  background-color: $color-background;
   margin: 0;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
 .container {
-  background-color: #ffffff;
+  background-color: $color-foreground;
   margin: 0 auto;
   min-height: 100vh;
   padding: 100px 40px 40px;

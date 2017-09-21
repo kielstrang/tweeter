@@ -1,9 +1,11 @@
+@import 'globals';
+
 #nav-bar {
   align-items: center;
-  background-color: #00a087;
-  color: #e8fdff;
+  background-color: $color-navbar;
+  color: $color-background;
   display: flex;
-  height: 80px;
+  height: $navbar-height;
   padding: 0 2em;
   position: fixed;
   top: 0;
@@ -12,26 +14,26 @@
 
   .logo {
     float: left;
-    height: 80px;
-    width: 80px;
+    height: $navbar-height;
+    width: $navbar-height;
   }
 
   .header {
     float: left;
     font-size: 200%;
-    line-height: 80px;
+    line-height: $navbar-height;
     margin-left: 10px;
     margin-right: auto;
   }
 
   .compose {
     align-items: center;
-    background-color: #e7fdff;
+    background-color: $color-background;
     border: 2px solid black;
     border-radius: 5px;
-    color: #00a087;
+    color: $color-navbar;
     display: flex;
-    fill: #00a087;
+    fill: $color-navbar;
     float: right;
     font-size: 120%;
     height: 70%;
@@ -48,7 +50,7 @@
   }
 
   .compose:hover {
-    background-color: white;
+    background-color: $color-foreground;
     color: black;
     fill: black;
   }

@@ -1,11 +1,14 @@
+@import 'globals';
+
 .tweet {
-  border: 1px solid #bbbbbb;
+  border: 1px solid $color-border;
   border-radius: 5px;
+  color: $color-text;
   margin-top: 20px;
   overflow: hidden;
 
   header {
-    background-color: #eeeeee;
+    background-color: $color-background;
     display: flex;
     padding: 10px;
     opacity: 0.7;
@@ -50,7 +53,7 @@
 
   footer {
     align-items: center;
-    border-top: 1px solid #bbbbbb;
+    border-top: 1px solid $color-border;
     display: flex;
     height: 30px;
     justify-content: space-between;
@@ -75,7 +78,7 @@
 }
 
 .tweet:hover {
-  border: 1px solid #00a087;
+  border: 1px solid $color-border-hover;
 
   header{
     opacity: 1;

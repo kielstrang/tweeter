@@ -1,6 +1,8 @@
+@import 'globals';
+
 #new-tweet {
-  background-color: #eeeeee;
-  border: 1px solid #bbbbbb;
+  background-color: $color-background;
+  border: 1px solid $color-border;
   border-radius: 5px;
   display: none;
   margin-top: 20px;
@@ -8,8 +10,8 @@
   opacity: 0.7;
 
   h2 {
-    border-bottom: 1px solid black;
-    color: black;
+    border-bottom: 1px solid $color-text;
+    color: $color-text;
     margin: 0 0 10px;
   }
 
@@ -23,16 +25,16 @@
     float: right;
 
     #tweet-counter.tweet-too-long {
-      color: red;
+      color: $color-error;
     }
   }
 
   #tweet-error  {
-    color: red;
+    color: $color-error;
   }
 }
 
 #new-tweet:hover {
-  border: 1px solid #00a087;
+  border: 1px solid $color-border-hover;
   opacity: 1;
 }
