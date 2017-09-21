@@ -26,8 +26,16 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
   // Mount the tweets routes at the "/tweets" path prefix:
   app.use("/tweets", tweetsRoutes);
 
-  app.listen(PORT, () => {
+  const server = app.listen(PORT, () => {
     console.log("Tweeter listening on port " + PORT);
+  });
+
+  // Close database and server on exiting
+  process.on('SIGINT', () => {
+    server.close();
+    db.close();
+    console.log('Tweeter exiting');
+    process.exit(0);
   });
 });
 
