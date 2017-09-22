@@ -83,7 +83,7 @@ body {
     float: right; }
     .slide-form #tweet-counter #tweet-counter.tweet-too-long {
       color: red; }
-  .slide-form #tweet-error {
+  .slide-form .error-msg {
     color: red; }
 
 .slide-form:hover {

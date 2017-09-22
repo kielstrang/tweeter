@@ -62,7 +62,7 @@
       <form action="/tweets" method="POST">
         <textarea name="text" placeholder="What are you humming about?"></textarea>
         <input type="submit" value="Tweet">
-        <span id="tweet-error"></span>
+        <span id="tweet-error" class="error-msg"></span>
         <span id="tweet-counter">140</span>
       </form>
     </section>
@@ -74,6 +74,7 @@
         <label for="password">Password:</label>
         <input class="password" type="password" name="password">
         <input type="submit" value="Log In">
+        <span id="login-error" class="error-msg"></span>
       </form>
     </section>
     <section id="register" class="slide-form">
@@ -86,6 +87,7 @@
         <label for="password">Password:</label>
         <input class="password" type="password" name="password">
         <input type="submit" value="Register">
+        <span id="register-error" class="error-msg"></span>
       </form>
     </section>
     <section id="tweets-container"></section>

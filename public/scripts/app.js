@@ -104,9 +104,10 @@ $(function() {
           $('#header-username').text(handle);
           page.data('handle', handle);
           page.data('password', password);
+          $('#login-error').text('');
           loginSection.slideUp('fast');
         } else {
-          alert('No!');
+          $('#login-error').text('Invalid handle or password!');
         }
       }
     });
