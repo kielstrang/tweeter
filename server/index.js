@@ -4,14 +4,40 @@
 const PORT = 8080;
 const express = require("express");
 const bodyParser = require("body-parser");
+const session = require("express-session");
+const MongoDBStore = require('connect-mongodb-session')(session);
 const app = express();
 
 // MongoDB setup:
 const {MongoClient} = require("mongodb");
 const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 
+const store = new MongoDBStore({
+  uri: MONGODB_URI,
+  collection: 'sessions'
+});
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+app.use(session({
+  secret: 'correct horse battery staple',
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+  },
+  store: store,
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.get('/session', function(req, res) {
+  res.send('Session: ' + JSON.stringify(req.session));
+});
+
+app.get('/session/:id', function(req, res) {
+  req.session.test = req.params.id;
+  res.send(`Saved: ${req.params.id}`);
+});
 
 MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) {

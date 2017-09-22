@@ -23,6 +23,8 @@ Server:
 - body-parser
 - chance
 - md5
+- express-session
+- connect-mongodb-session
 
 Client:
 - moment.js
