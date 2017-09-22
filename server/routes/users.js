@@ -11,7 +11,8 @@ module.exports = function(DataHelpers) {
     DataHelpers.validateLogin(req.body.handle, req.body.password, (err, isValidLogin) => {
       if(err) return res.status(500).json({ error: err.message });
 
-      res.json({isValidLogin});
+      if(isValidLogin) return res.status(200).send();
+      return res.status(401).json({error: "Invalid handle or password"});
     });
   });
 

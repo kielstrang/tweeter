@@ -115,6 +115,9 @@ $(function() {
         } else {
           $('#login-error').text('Invalid handle or password!');
         }
+      },
+      error: (request, status, error) => {
+        $('#login-error').text(JSON.parse(request.responseText).error);
       }
     });
   }
