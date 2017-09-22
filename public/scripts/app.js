@@ -94,6 +94,14 @@ $(function() {
     }
   }
 
+  function setLoggedInUser(handle, password) {
+    $('.nav-logged-in').removeClass('hide');
+    $('.nav-logged-out').addClass('hide');
+    $('#header-username').text(handle);
+    page.data('handle', handle);
+    page.data('password', password);
+  }
+
   function login(handle, password) {
     $.ajax({
       url: '/users/login',
@@ -101,11 +109,7 @@ $(function() {
       data: { handle, password },
       success: (response) => {
         if(response.isValidLogin) {
-          $('.nav-logged-in').removeClass('hide');
-          $('.nav-logged-out').addClass('hide');
-          $('#header-username').text(handle);
-          page.data('handle', handle);
-          page.data('password', password);
+          setLoggedInUser(handle, password);
           $('#login-error').text('');
           loginSection.slideUp('fast');
         } else {
@@ -123,6 +127,21 @@ $(function() {
     page.removeData('password');
   }
 
+  function register(name, handle, password) {
+    $.ajax({
+      url: '/users/new',
+      method: 'POST',
+      data: { name, handle, password },
+      success: (response) => {
+        setLoggedInUser(handle, password);
+        $('#register-error').text('');
+      },
+      error: (request, status, error) => {
+        $('#register-error').text(JSON.parse(request.responseText).error);
+      }
+    });
+  }
+
   loadTweets();
 
   newTweetSection.find('form').on('submit', function(event) {
@@ -138,7 +157,7 @@ $(function() {
 
   registerSection.find('form').on('submit', function(event) {
     event.preventDefault();
-    register($(this).find('.username').val(), $(this).find('.password').val());
+    register($(this).find('.name').val(), $(this).find('.handle').val(), $(this).find('.password').val());
   });
 
   newTweetInput.on('keypress', function(event) {
