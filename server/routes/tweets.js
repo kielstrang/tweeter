@@ -23,20 +23,39 @@ module.exports = function(DataHelpers) {
       return;
     }
 
-    const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
-    const tweet = {
-      user: user,
-      content: {
-        text: req.body.text
-      },
-      created_at: Date.now()
-    };
-
-    DataHelpers.saveTweet(tweet, (err) => {
+    DataHelpers.validateLogin(req.body.handle, req.body.password, function(err, isValidLogin) {
       if(err) {
         res.status(500).json({ error: err.message });
+        return;
+      }
+
+      if(isValidLogin) {
+        DataHelpers.getUserDetails(req.body.handle, function(err, user) {
+          if(err) {
+            res.status(500).json({ error: err.message });
+            return;
+          }
+
+          const tweet = {
+            user: user,
+            content: {
+              text: req.body.text
+            },
+            created_at: Date.now()
+          };
+
+          DataHelpers.saveTweet(tweet, (err) => {
+            console.log(tweet);
+            if(err) {
+              res.status(500).json({ error: err.message });
+            } else {
+              res.status(201).send();
+            }
+          });
+        });
       } else {
-        res.status(201).send();
+        console.log(`User: ${req.body.handle} Password: ${req.body.password}`);
+        res.status(401).send();
       }
     });
   });

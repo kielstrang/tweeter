@@ -63,7 +63,9 @@ $(function() {
       url: '/tweets',
       method: 'POST',
       data: {
-        text: newTweetInput.val()
+        text: newTweetInput.val(),
+        handle: page.data('handle'),
+        password: page.data('password')
       },
       success: function() {
         newTweetSection.slideUp('fast');

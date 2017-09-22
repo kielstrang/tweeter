@@ -9,7 +9,7 @@ module.exports = function(DataHelpers) {
 
   usersRoutes.post("/login", function(req, res) {
     console.log(req.body);
-    DataHelpers.isValidLogin(req.body.handle, req.body.password, (err, isValidLogin) => {
+    DataHelpers.validateLogin(req.body.handle, req.body.password, (err, isValidLogin) => {
       if(err) {
         res.status(500).json({ error: err.message });
       } else {
