@@ -8,11 +8,14 @@ const usersRoutes = express.Router();
 module.exports = function(DataHelpers) {
 
   usersRoutes.post("/login", function(req, res) {
-    DataHelpers.validateLogin(req.body.handle, req.body.password, (err, isValidLogin) => {
+    const {handle, password} = req.body;
+    console.log(handle, password);
+    DataHelpers.validateLogin(handle, password, (err, isValidLogin) => {
       if(err) return res.status(500).json({ error: err.message });
+      if(!isValidLogin) return res.status(401).json({error: "Invalid handle or password"});
 
-      if(isValidLogin) return res.status(200).send();
-      return res.status(401).json({error: "Invalid handle or password"});
+      req.session.handle = handle;
+      return res.status(200).send();
     });
   });
 

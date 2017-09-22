@@ -103,18 +103,15 @@ $(function() {
   }
 
   function login(handle, password) {
+    console.log("Loggiing in!");
     $.ajax({
       url: '/users/login',
       method: 'POST',
       data: { handle, password },
       success: (response) => {
-        if(response.isValidLogin) {
-          setLoggedInUser(handle, password);
-          $('#login-error').text('');
-          loginSection.slideUp('fast');
-        } else {
-          $('#login-error').text('Invalid handle or password!');
-        }
+        setLoggedInUser(handle, password);
+        $('#login-error').text('');
+        loginSection.slideUp('fast');
       },
       error: (request, status, error) => {
         $('#login-error').text(JSON.parse(request.responseText).error);
