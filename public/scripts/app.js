@@ -92,19 +92,32 @@ $(function() {
     }
   }
 
-  function login(username, password) {
-    $('.nav-logged-in').removeClass('hide');
-    $('.nav-logged-out').addClass('hide');
-    $('#header-username').text(`@${username}`);
-    page.data('username', username);
-    loginSection.slideUp('fast');
+  function login(handle, password) {
+    $.ajax({
+      url: '/users/login',
+      method: 'POST',
+      data: { handle, password },
+      success: (response) => {
+        if(response.isValidLogin) {
+          $('.nav-logged-in').removeClass('hide');
+          $('.nav-logged-out').addClass('hide');
+          $('#header-username').text(handle);
+          page.data('handle', handle);
+          page.data('password', password);
+          loginSection.slideUp('fast');
+        } else {
+          alert('No!');
+        }
+      }
+    });
   }
 
   function logout() {
     $('.nav-logged-in').addClass('hide');
     $('.nav-logged-out').removeClass('hide');
     $('#header-username').text('');
-    page.removeData('username');
+    page.removeData('handle');
+    page.removeData('password');
   }
 
   loadTweets();
@@ -116,7 +129,8 @@ $(function() {
 
   loginSection.find('form').on('submit', function(event) {
     event.preventDefault();
-    login($(this).find('.username').val(), $(this).find('.password').val());
+
+    login(loginSection.find('form').find('.handle').val(), loginSection.find('form').find('.password').val());
   });
 
   registerSection.find('form').on('submit', function(event) {

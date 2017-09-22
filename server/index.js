@@ -22,9 +22,11 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
 
   const DataHelpers = require("./lib/data-helpers.js")(db);
   const tweetsRoutes = require("./routes/tweets")(DataHelpers);
+  const usersRoutes = require("./routes/users")(DataHelpers);
 
   // Mount the tweets routes at the "/tweets" path prefix:
   app.use("/tweets", tweetsRoutes);
+  app.use("/users", usersRoutes);
 
   const server = app.listen(PORT, () => {
     console.log("Tweeter listening on port " + PORT);

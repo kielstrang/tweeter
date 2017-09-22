@@ -1,5 +1,7 @@
 "use strict";
 
+const md5 = require('md5');
+
 module.exports = function makeDataHelpers(db) {
   return {
 
@@ -10,8 +12,12 @@ module.exports = function makeDataHelpers(db) {
 
     // Get all tweets in `db`, sorted by newest first
     getTweets: function(callback) {
-      const sortNewestFirst = (a, b) => a.created_at - b.created_at;
       const tweets = db.collection('tweets').find().sort({created_at: 1}).toArray(callback);
+    },
+
+    // Check if a handle/password login combination is valid
+    isValidLogin: function(handle, password, callback) {
+      const user = db.collection('users').find({handle, password}).limit(1).count(callback);
     }
   };
 };
