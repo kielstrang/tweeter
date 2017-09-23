@@ -49,13 +49,7 @@ $(function() {
   }
 
   function loadTweets() {
-    $.ajax({
-      url: '/tweets',
-      method: 'GET',
-      success: function(response) {
-        renderTweets(response);
-      }
-    });
+    $.getJSON('/tweets', renderTweets);
   }
 
   function saveTweet() {
@@ -94,22 +88,36 @@ $(function() {
     }
   }
 
-  function setLoggedInUser(handle, password) {
+  function updateNavbar() {
+    $.getJSON('/users', (response) => {
+      if(response.handle) {
+        setNavbarUser(response.handle);
+      } else{
+        setNavbarLogin();
+      }
+    });
+  }
+
+  function setNavbarUser(handle) {
     $('.nav-logged-in').removeClass('hide');
     $('.nav-logged-out').addClass('hide');
     $('#header-username').text(handle);
-    page.data('handle', handle);
-    page.data('password', password);
   }
 
+  function setNavbarLogin() {
+    $('.nav-logged-in').addClass('hide');
+    $('.nav-logged-out').removeClass('hide');
+    $('#header-username').text('');
+  }
+
+
   function login(handle, password) {
-    console.log("Loggiing in!");
     $.ajax({
       url: '/users/login',
       method: 'POST',
       data: { handle, password },
       success: (response) => {
-        setLoggedInUser(handle, password);
+        updateNavbar();
         $('#login-error').text('');
         loginSection.slideUp('fast');
       },
@@ -120,11 +128,9 @@ $(function() {
   }
 
   function logout() {
-    $('.nav-logged-in').addClass('hide');
-    $('.nav-logged-out').removeClass('hide');
-    $('#header-username').text('');
-    page.removeData('handle');
-    page.removeData('password');
+    $.post('/users/logout', () => {
+      updateNavbar();
+    });
   }
 
   function register(name, handle, password) {
@@ -133,7 +139,7 @@ $(function() {
       method: 'POST',
       data: { name, handle, password },
       success: (response) => {
-        setLoggedInUser(handle, password);
+        updateNavbar();
         $('#register-error').text('');
       },
       error: (request, status, error) => {
@@ -142,6 +148,7 @@ $(function() {
     });
   }
 
+  updateNavbar();
   loadTweets();
 
   newTweetSection.find('form').on('submit', function(event) {

@@ -22,6 +22,11 @@ module.exports = function(DataHelpers) {
     });
   });
 
+  usersRoutes.post('/logout', function(req, res) {
+    req.session.destroy();
+    res.status(200).send();
+  });
+
   usersRoutes.post("/new", function(req, res) {
     const { name, handle, password } = req.body;
     DataHelpers.checkHandleAvailable(handle, (err, isAvailable) => {
