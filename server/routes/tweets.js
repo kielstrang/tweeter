@@ -17,27 +17,22 @@ module.exports = function(DataHelpers) {
 
   tweetsRoutes.post("/", function(req, res) {
     if(!req.body.text) return res.status(400).json({ error: 'invalid request: no data in POST body' });
-
-    DataHelpers.validateLogin(req.body.handle, req.body.password, function(err, isValidLogin) {
+    DataHelpers.getUserDetails(req.session.handle, function(err, user) {
       if(err) return res.status(500).json({ error: err.message });
-      if(!isValidLogin) return res.status(401).json({error: 'Invalid login'});
+      if(!user) return res.status(401).json({ error: "Invalid user session"});
 
-      DataHelpers.getUserDetails(req.body.handle, function(err, user) {
+      const tweet = {
+        user: user,
+        content: {
+          text: req.body.text
+        },
+        created_at: Date.now()
+      };
+
+      DataHelpers.saveTweet(tweet, (err) => {
         if(err) return res.status(500).json({ error: err.message });
 
-        const tweet = {
-          user: user,
-          content: {
-            text: req.body.text
-          },
-          created_at: Date.now()
-        };
-
-        DataHelpers.saveTweet(tweet, (err) => {
-          if(err) return res.status(500).json({ error: err.message });
-
-          res.status(201).send();
-        });
+        res.status(201).send();
       });
     });
   });

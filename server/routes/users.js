@@ -7,6 +7,10 @@ const usersRoutes = express.Router();
 
 module.exports = function(DataHelpers) {
 
+  usersRoutes.get('/', function(req, res) {
+    res.json({handle: req.session.handle});
+  });
+
   usersRoutes.post("/login", function(req, res) {
     const { handle, password } = req.body;
     DataHelpers.validateLogin(handle, password, (err, isValidLogin) => {
