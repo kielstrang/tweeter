@@ -30,15 +30,6 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.get('/session', function(req, res) {
-  res.send('Session: ' + JSON.stringify(req.session));
-});
-
-app.get('/session/:id', function(req, res) {
-  req.session.test = req.params.id;
-  res.send(`Saved: ${req.params.id}`);
-});
-
 MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) {
     console.error(`Failed to connect: ${MONGODB_URI}`);

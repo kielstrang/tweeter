@@ -53,20 +53,16 @@ $(function() {
   }
 
   function saveTweet() {
-    $.ajax({
-      url: '/tweets',
-      method: 'POST',
-      data: {
-        text: newTweetInput.val(),
-        handle: page.data('handle'),
-        password: page.data('password')
-      },
-      success: function() {
-        newTweetSection.slideUp('fast');
-        newTweetInput.val('');
-        $('#tweet-counter').text(MAX_TWEET_LENGTH);
-        loadTweets();
-      }
+    $.post('/tweets', {
+      text: newTweetInput.val(),
+      handle: page.data('handle'),
+      password: page.data('password')
+    },
+    () => {
+      newTweetSection.slideUp('fast');
+      newTweetInput.val('');
+      $('#tweet-counter').text(MAX_TWEET_LENGTH);
+      loadTweets();
     });
   }
 
@@ -151,30 +147,30 @@ $(function() {
   updateNavbar();
   loadTweets();
 
-  newTweetSection.find('form').on('submit', function(event) {
+  newTweetSection.find('form').on('submit', (event) => {
     event.preventDefault();
     submitTweet();
   });
 
-  loginSection.find('form').on('submit', function(event) {
+  loginSection.find('form').on('submit', (event) => {
     event.preventDefault();
 
     login(loginSection.find('form').find('.handle').val(), loginSection.find('form').find('.password').val());
   });
 
-  registerSection.find('form').on('submit', function(event) {
+  registerSection.find('form').on('submit', (event) => {
     event.preventDefault();
     register($(this).find('.name').val(), $(this).find('.handle').val(), $(this).find('.password').val());
   });
 
-  newTweetInput.on('keypress', function(event) {
+  newTweetInput.on('keypress', (event) => {
     if(event.key === 'Enter' && !event.shiftKey) {
       newTweetSection.find('form').submit();
     }
   });
 
-  $('#compose-btn').on('click', function() {
-    newTweetSection.slideToggle('fast', function() {
+  $('#compose-btn').on('click', () => {
+    newTweetSection.slideToggle('fast', () => {
       if(!newTweetSection.is(':hidden')) {
         window.scrollTo(0,0);
         newTweetInput.focus();
@@ -182,9 +178,9 @@ $(function() {
     });
   });
 
-  $('#login-btn').on('click', function() {
+  $('#login-btn').on('click', () => {
     registerSection.slideUp('fast');
-    loginSection.slideToggle('fast', function() {
+    loginSection.slideToggle('fast', () => {
       if(!loginSection.is(':hidden')) {
         window.scrollTo(0,0);
         $(this).find('.username').focus();
@@ -192,9 +188,9 @@ $(function() {
     });
   });
 
-  $('#register-btn').on('click', function() {
+  $('#register-btn').on('click', () => {
     loginSection.slideUp('fast');
-    registerSection.slideToggle('fast', function() {
+    registerSection.slideToggle('fast', () => {
       if(!registerSection.is(':hidden')) {
         window.scrollTo(0,0);
         $(this).find('.username').focus();
@@ -202,7 +198,5 @@ $(function() {
     });
   });
 
-  $('#logout-btn').on('click', function () {
-    logout();
-  });
+  $('#logout-btn').on('click', logout);
 });
